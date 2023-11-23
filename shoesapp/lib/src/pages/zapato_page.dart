@@ -7,7 +7,15 @@ const ZapatoPage({ Key? key }) : super(key: key);
   @override
   Widget build(BuildContext context){
     return const Scaffold(
-      body: CustomAppBar()
+      // body: CustomAppBar(texto: 'Para ti')
+      // body: ZapatoSizePreview()
+      body: Column(
+        children: [
+          CustomAppBar(texto: 'Para Ti'),
+          SizedBox(height: 20),
+          ZapatoSizePreview()
+        ],
+      )
     );
   }
 }
