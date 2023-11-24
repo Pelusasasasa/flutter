@@ -82,12 +82,12 @@ const _ZapatoTallas();
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _TallaZapatoCaja(7),
-          _TallaZapatoCaja(7.5),
-          _TallaZapatoCaja(8),
-          _TallaZapatoCaja(8.5),
-          _TallaZapatoCaja(9),
-          _TallaZapatoCaja(9.5),
+          _TallaZapatoCaja(7,false),
+          _TallaZapatoCaja(7.5,false),
+          _TallaZapatoCaja(8,false),
+          _TallaZapatoCaja(8.5,false),
+          _TallaZapatoCaja(9,true),
+          _TallaZapatoCaja(9.5,false),
         ],
       ),
     );
@@ -97,27 +97,28 @@ const _ZapatoTallas();
 class _TallaZapatoCaja extends StatelessWidget {
 
   final double numero;
+  final bool bandera;
 
-  const _TallaZapatoCaja(this.numero);
+  const _TallaZapatoCaja(this.numero,this.bandera);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
-      width: 45,
-      height: 45,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        // boxShadow: [
-        //   BoxShadow()
-        // ]
-      ),
-      child: Text('${numero.toString().replaceAll('.0','')}',style: const TextStyle(
-        color: Color(0xffF1A23A),
-        fontSize: 16,
-        fontWeight: FontWeight.bold
-      )),
-    );
-  }
+          alignment: Alignment.center,
+          width: 45,
+          height: 45,
+          decoration: BoxDecoration(
+            color: bandera ? const Color(0xffF1A23A) : Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              bandera == true ? const BoxShadow(color: Color(0xffF1A23A), blurRadius: 10, offset: Offset(0,5)) : const BoxShadow(),
+            ]
+          ),
+        child: Text('${numero.toString().replaceAll('.0','')}',style: TextStyle(
+            color: bandera ? Colors.white : const Color(0xffF1A23A),
+            fontSize: 16,
+            fontWeight: FontWeight.bold
+          )),
+        );
+      }
 }
